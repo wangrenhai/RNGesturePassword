@@ -152,7 +152,6 @@ export default class GesturePassword extends Component {
     renderCircles(flag = 1) {
         let array = [], fill, color, inner, outer;
         let {status, normalColor, wrongColor, rightColor, innerCircle, outerCircle} = this.props;
-
         if (flag == 1) {
             this.state.circles.forEach(function (c, i) {
                 fill = c.isActive;
@@ -176,8 +175,6 @@ export default class GesturePassword extends Component {
                 )
             });
         }
-
-
         return array;
     }
 
@@ -185,11 +182,9 @@ export default class GesturePassword extends Component {
     renderLines(flag = 1, linewid = 5) {
         let array = [], color;
         let {status, wrongColor, rightColor} = this.props;
-
         if (flag == 1) {
             this.state.lines.forEach(function (l, i) {
                 color = status === 'wrong' ? wrongColor : rightColor;
-
                 array.push(
                     <Line key={'l_' + i} color={color} start={l.start} end={l.end}/>
                 )
@@ -197,7 +192,6 @@ export default class GesturePassword extends Component {
         } else {
             this.state.lines_x.forEach(function (l, i) {
                 color = rightColor;
-
                 if (linewid == 5) {
                     array.push(
                         <Line key={'l_' + i} color={color} start={l.start} end={l.end}/>
@@ -205,7 +199,6 @@ export default class GesturePassword extends Component {
                 }
             });
         }
-
         return array;
     }
 
@@ -312,14 +305,10 @@ export default class GesturePassword extends Component {
                 return;
             }
             this.refs.line.setNativeProps({end: {x, y}});
-
             let lastChar = null;
-
-
             if (this.state.circles[this.lastIndex] && !helper.isPointInCircle({x, y}, this.state.circles[this.lastIndex], Radius)) {
                 lastChar = this.getTouchChar({x, y});
             }
-
             if (lastChar && this.sequence.indexOf(lastChar) === -1) {
                 if (!this.props.allowCross) {
                     let crossChar = this.getCrossChar(lastChar);
@@ -329,10 +318,8 @@ export default class GesturePassword extends Component {
                         this.setActive(Number(crossChar));
                     }
                 }
-
                 let lastIndex = this.lastIndex;
                 let thisIndex = Number(lastChar);
-
                 this.state.lines.push({
                     start: {
                         x: this.state.circles[lastIndex].x,
@@ -343,7 +330,6 @@ export default class GesturePassword extends Component {
                         y: this.state.circles[thisIndex].y
                     }
                 });
-
                 this.lastIndex = Number(lastChar);
                 this.sequence += lastChar;
 

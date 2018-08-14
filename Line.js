@@ -28,7 +28,6 @@ export default class Line extends Component {
         let angle = transform.a + 'rad';
         let moveX = transform.x;
         let moveY = transform.y;
-
         return (
             <View ref='line' style={[
                 styles.line, {backgroundColor: color, left: start.x, top: start.y, width: length},
