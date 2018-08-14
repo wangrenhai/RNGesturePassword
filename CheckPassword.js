@@ -52,7 +52,6 @@ export default class CheckPassword extends Component {
         const {isCheck} = this.props;
         return (
             <View>
-                <StatusBar backgroundColor="#00FF00"/>
                 <GesturePassword
                     ref='pg'
                     status={this.state.status}
